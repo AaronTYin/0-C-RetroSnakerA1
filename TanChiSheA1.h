@@ -10,17 +10,19 @@
 一定注意snakeBody[][]第一个值
 不要用snakeLarge+i，因为i=snakeLarge+2了，直接用i即可
 
-瑕疵2：屏幕闪烁问题
+瑕疵2：屏幕闪烁问题（已用gotoxy()解决）
 瑕疵3：碰到自身GameOver延迟一次的问题
+瑕疵4：自动行走有一格延迟，下一版本再说
 */
 
 #ifndef TCSH_H
 #define TCSH_H
 
 #include <iostream>
-#include <stdlib.h>
+#include <cstdlib>
 #include <conio.h>
 #include <ctime>
+#include <Windows.h>
 using namespace std;
 
 #define Size 28
@@ -128,7 +130,8 @@ void Init::InitScore()
 	strcpy_s(Map[12][Size + 2], "Sc");
 	strcpy_s(Map[12][Size + 3], "or");
 	strcpy_s(Map[12][Size + 4], "e:");
-	*Map[12][Size + 5] = '0' + snakeLarge;			//给字符型数组赋整型值
+	//*Map[12][Size + 5] = '0' + snakeLarge;	//给字符型数组赋整型值（已由新方法解决）
+	strcpy_s(Map[12][Size + 5], "0 ");
 
 	strcpy_s(Map[16][Size + 2], "Q ");
 	strcpy_s(Map[16][Size + 3], ": ");
@@ -159,13 +162,13 @@ void Init::InitFood(bool eat)
 	{
 		i = time(0);
 		ii = i * i;
-		strcpy_s(Map[foodRandX_Old][foodRandY_Old], "■");
+		//strcpy_s(Map[foodRandX_Old][foodRandY_Old], "  ");
 		srand(i);										//用系统时间产生随机数
 		foodRandX_New = rand() % (Size - 2) + 1;		//1-(Size-2)的随机数
 		srand(ii);
 		foodRandY_New = rand() % (Size - 2) + 1;
 	}
-	strcpy_s(Map[foodRandX_New][foodRandY_New], Food);
+	//strcpy_s(Map[foodRandX_New][foodRandY_New], Food);		//(已由新方法解决)
 
 	//for (int i = 0; i < 30; i++)
 	//	cout << rand() % 26 + 1 << endl;
@@ -180,7 +183,7 @@ void Init::InitSnake()
 	snakeBody[2][1] = snakeBody[0][1];
 	strcpy_s(Map[(snakeBody[0][0])][(snakeBody[0][1])], "■");
 	strcpy_s(Map[(snakeBody[1][0])][(snakeBody[1][1])], "□");
-	strcpy_s(Map[snakeBody[2][0]][snakeBody[2][1]], "□");
+	strcpy_s(Map[snakeBody[2][0]][snakeBody[2][1]], "  ");
 
 	for (int i = 3; i < 100; i++)
 	{
@@ -197,72 +200,72 @@ void Operation::Move(int dir)		//主要功能函数
 
 	switch (dir)
 	{
-	case 1:
+	case 72:
 	{
 		int i = snakeLarge + 2;
-		strcpy_s(Map[(snakeBody[i][0])][(snakeBody[i][1])], "  ");
+		//strcpy_s(Map[(snakeBody[i][0])][(snakeBody[i][1])], "  ");	//(已由新方法解决)
 		for (; i > 0; i--)
 		{
 			snakeBody[i][0] = snakeBody[(i - 1)][0];
 			snakeBody[i][1] = snakeBody[(i - 1)][1];
 		}
-		for (i = snakeLarge + 2; i > 0; i--)
+		/*for (i = snakeLarge + 2; i > 0; i--)							//(已由新方法解决)
 		{
 			strcpy_s(Map[(snakeBody[i][0])][(snakeBody[i][1])], "□");
-		}
+		}*/
 		snakeBody[0][0] -= 1;
-		strcpy_s(Map[(snakeBody[0][0])][(snakeBody[0][1])], "■");
+		//strcpy_s(Map[(snakeBody[0][0])][(snakeBody[0][1])], "■");	//(已由新方法解决)
 		break;
 	}
-	case 2:
+	case 80:
 	{
 		int i = snakeLarge + 2;
-		strcpy_s(Map[(snakeBody[i][0])][(snakeBody[i][1])], "  ");
+		//strcpy_s(Map[(snakeBody[i][0])][(snakeBody[i][1])], "  ");	//(已由新方法解决)
 		for (; i > 0; i--)
 		{
 			snakeBody[i][0] = snakeBody[(i - 1)][0];
 			snakeBody[i][1] = snakeBody[(i - 1)][1];
 		}
-		for (i = snakeLarge + 2; i > 0; i--)
+		/*for (i = snakeLarge + 2; i > 0; i--)							//(已由新方法解决)
 		{
 			strcpy_s(Map[(snakeBody[i][0])][(snakeBody[i][1])],"□");
-		}
+		}*/
 		snakeBody[0][0] += 1;
-		strcpy_s(Map[(snakeBody[0][0])][(snakeBody[0][1])], "■");
+		//strcpy_s(Map[(snakeBody[0][0])][(snakeBody[0][1])], "■");	//(已由新方法解决)
 		break;
 	}
-	case 3:
+	case 75:
 	{
 		int i = snakeLarge + 2;
-		strcpy_s(Map[(snakeBody[i][0])][(snakeBody[i][1])], "  ");
+		//strcpy_s(Map[(snakeBody[i][0])][(snakeBody[i][1])], "  ");
 		for (; i > 0; i--)
 		{
 			snakeBody[i][0] = snakeBody[(i - 1)][0];
 			snakeBody[i][1] = snakeBody[(i - 1)][1];
 		}
-		for (i = snakeLarge + 2; i > 0; i--)
+		/*for (i = snakeLarge + 2; i > 0; i--)
 		{
 			strcpy_s(Map[(snakeBody[i][0])][(snakeBody[i][1])], "□");
-		}
+		}*/
 		snakeBody[0][1] -= 1;
-		strcpy_s(Map[(snakeBody[0][0])][(snakeBody[0][1])], "■");
+		//strcpy_s(Map[(snakeBody[0][0])][(snakeBody[0][1])], "■");
 		break;
 	}
-	case 4:
+	case 77:
 	{
 		int i = snakeLarge + 2;
-		strcpy_s(Map[(snakeBody[i][0])][(snakeBody[i][1])], "  ");
+		//strcpy_s(Map[(snakeBody[i][0])][(snakeBody[i][1])], "  ");
 		for (; i > 0; i--)
 		{
 			snakeBody[i][0] = snakeBody[(i - 1)][0];
 			snakeBody[i][1] = snakeBody[(i - 1)][1];
 		}
-		for (i = snakeLarge + 2; i > 0; i--)
-		{
-			strcpy_s(Map[(snakeBody[i][0])][(snakeBody[i][1])], "□");
-		}
+		//for (i = snakeLarge + 2; i > 0; i--)
+		//{
+		//	strcpy_s(Map[(snakeBody[i][0])][(snakeBody[i][1])], "□");
+		//}
 		snakeBody[0][1] += 1;
-		strcpy_s(Map[(snakeBody[0][0])][(snakeBody[0][1])], "■");
+		//strcpy_s(Map[(snakeBody[0][0])][(snakeBody[0][1])], "■");
 		break;
 	}
 	}
@@ -334,6 +337,13 @@ void Operation::GameOver()
 	ChoseA(0);
 }
 
+
+void gotoxy(int x, int y)
+{
+	HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+	COORD pos = { x,y };
+	SetConsoleCursorPosition(hOut, pos);
+}
 void ChoseB(int Cb, bool B);
 void ChoseA(int Ca)
 {
@@ -396,63 +406,81 @@ void ChoseB(int Cb,bool B)
 		initB.InitMapBegin();
 		initB.InitSnake();
 		initB.InitFood(false);
+		system("cls");
+		initB.InitScore();
 		initB.ShowMap();
-		bool flagP = false;
+		Cb = _getch();
 
-		for (int w = 0;; w++)
+		while(1)
 		{
-			system("cls");
-			initB.InitScore();
-			initB.ShowMap();
 			//_getch();					//上下左右可以只用一个键监测
-			Cb = _getch();
-
-			if (Cb == 113 || Cb == 50)				//Q或2
+			//if (kbhit())				//自动行走有延迟现象，下一版本解决
 			{
-				system("cls");
-				initB.InitMapBegin();
+				Cb = _getch();
 
-				strcpy_s(Map[12][8], "感");
-				strcpy_s(Map[12][10], "谢");
-				strcpy_s(Map[12][12], "您");
-				strcpy_s(Map[12][14], "的");
-				strcpy_s(Map[12][16], "使");
-				strcpy_s(Map[12][18], "用");
-
-				initB.ShowMap();
-				exit(0);
-			}
-			else if (Cb == 112)			//P
-			{
-				system("cls");
-				strcpy_s(Map[12][13], "暂");
-				strcpy_s(Map[12][14], "停");
-				initB.ShowMap();
-				for (int i = 0;; i++)
+				if (Cb == 113 || Cb == 50)				//Q或2
 				{
-					if (_getch() == 112)
+					system("cls");
+					initB.InitMapBegin();
+
+					strcpy_s(Map[12][8], "感");
+					strcpy_s(Map[12][10], "谢");
+					strcpy_s(Map[12][12], "您");
+					strcpy_s(Map[12][14], "的");
+					strcpy_s(Map[12][16], "使");
+					strcpy_s(Map[12][18], "用");
+
+					initB.ShowMap();
+					exit(0);
+				}
+				else if (Cb == 112)			//P
+				{
+					system("cls");
+					strcpy_s(Map[12][13], "暂");
+					strcpy_s(Map[12][14], "停");
+					initB.ShowMap();
+					for (int i = 0;; i++)
 					{
-						strcpy_s(Map[12][13], "  ");
-						strcpy_s(Map[12][14], "  ");
-						break;
+						if (_getch() == 112)
+						{
+							strcpy_s(Map[12][13], "  ");
+							strcpy_s(Map[12][14], "  ");
+							break;
+						}
 					}
 				}
+				else if (Cb == 110)			//N
+					ChoseA(0);
+				else if (Cb == 49)			//1
+					ChoseB(0, true);
+				else if (Cb == 72)			//上
+					opeB.Move(72);
+				else if (Cb == 80)			//下
+					opeB.Move(80);
+				else if (Cb == 75)			//左
+					opeB.Move(75);
+				else if (Cb == 77)			//右
+					opeB.Move(77);
 			}
-			else if (Cb == 110)			//N
-				ChoseA(0);
-			else if (Cb == 49)			//1
-				ChoseB(0, true);
-			else if (Cb == 72)			//上
-				opeB.Move(1);
-			else if (Cb == 80)			//下
-				opeB.Move(2);
-			else if (Cb == 75)			//左
-				opeB.Move(3);
-			else if (Cb == 77)			//右
-				opeB.Move(4);
+			//opeB.Move(Cb);
 
+
+			gotoxy(snakeBody[snakeLarge + 2][1] * 2, snakeBody[snakeLarge + 2][0]);
+			cout << "  ";
+			gotoxy(snakeBody[0][1] * 2, snakeBody[0][0]);
+			cout << "■";
+			for (int i = 1; i < snakeLarge + 2; i++)
+			{
+				gotoxy(snakeBody[i][1] * 2, snakeBody[i][0]);
+				cout << "□";
+			}
 			opeB.JudgeFood();
+			gotoxy(foodRandY_New * 2, foodRandX_New);
+			cout << "[]";
+			gotoxy((Size + 5) * 2, 12);
+			cout << snakeLarge;
 			opeB.JudgeWall();
+			//_sleep(200);
 
 		}
 	}
