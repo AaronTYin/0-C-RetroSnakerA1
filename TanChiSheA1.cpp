@@ -1,4 +1,4 @@
-#include "Ã∞≥‘…ﬂA1\TanChiSheA1.h"
+#include "TanChiSheA1.h"
 
 int main()
 {
