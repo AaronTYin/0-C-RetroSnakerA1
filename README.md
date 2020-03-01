@@ -8,12 +8,12 @@ TanChiSheA1 with C＼C++ and few WindowsAPI
 >详见：[C++命令行贪吃蛇](https://mengze.top/C++命令行贪吃蛇/)
 
 ## 主界面
-
+<img src="https://github.com/AaronTYin/0-C-RetroSnakerA1/blob/master/Img/%E4%B8%BB%E7%95%8C%E9%9D%A2.jpg" width=60%></img>
 ## 初始化
-
+<img src="https://github.com/AaronTYin/0-C-RetroSnakerA1/blob/master/Img/%E5%88%9D%E5%A7%8B%E5%8C%96.jpg" width=60%></img>
 ## 游戏中
-
+<img src="https://github.com/AaronTYin/0-C-RetroSnakerA1/blob/master/Img/%E6%B8%B8%E6%88%8F%E4%B8%AD.jpg" width=60%></img>
 ## 暂停
-
+<img src="https://github.com/AaronTYin/0-C-RetroSnakerA1/blob/master/Img/%E6%9A%82%E5%81%9C.jpg" width=60%></img>
 ## 失败
-<img src="" width=60%></img>
+<img src="https://github.com/AaronTYin/0-C-RetroSnakerA1/blob/master/Img/%E5%A4%B1%E8%B4%A5.jpg" width=60%></img>
