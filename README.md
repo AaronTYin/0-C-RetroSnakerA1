@@ -1,4 +1,3 @@
-
 # TanChiSheA1
 TanChiSheA1 with C＼C++ and few WindowsAPI
 
@@ -7,3 +6,14 @@ TanChiSheA1 with C＼C++ and few WindowsAPI
 >此版本不再更新，之后将用其他语言重做。
 
 >详见：[C++命令行贪吃蛇](https://mengze.top/C++命令行贪吃蛇/)
+
+## 主界面
+
+## 初始化
+
+## 游戏中
+
+## 暂停
+
+## 失败
+<img src="" width=60%></img>
