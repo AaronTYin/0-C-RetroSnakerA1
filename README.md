@@ -5,7 +5,7 @@ TanChiSheA1 with C＼C++ and few WindowsAPI
 
 >此版本不再更新，之后将用其他语言重做。
 
->详见：[C++命令行贪吃蛇](https://mengze.top/C++命令行贪吃蛇/)
+>详见：[【O】C++命令行贪吃蛇](https://mengze.top/[O]C++命令行贪吃蛇/)
 
 ## 主界面
 <img src="https://github.com/AaronTYin/0-C-RetroSnakerA1/blob/master/Img/%E4%B8%BB%E7%95%8C%E9%9D%A2.png" width=60%></img>
