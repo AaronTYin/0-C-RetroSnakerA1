@@ -17,3 +17,8 @@ TanChiSheA1 with C＼C++ and few WindowsAPI
 <img src="https://github.com/AaronTYin/0-C-RetroSnakerA1/blob/master/Img/%E6%9A%82%E5%81%9C.png" width=60%></img>
 ## 失败
 <img src="https://github.com/AaronTYin/0-C-RetroSnakerA1/blob/master/Img/%E5%A4%B1%E8%B4%A5.png" width=60%></img>
+
+# LICENSE
+>0-C-RetroSnakerA1 is licensed with the permissive Apache 2.0 license. See the [LICENSE](https://github.com/AaronTYin/0-C-RetroSnakerA1/blob/master/LICENSE) file for the full text of the license.
+
+>Copyright © 2016-2020 MengZeATY
